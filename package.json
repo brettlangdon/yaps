@@ -1,0 +1,27 @@
+{
+    "author": "Brett Langdon <brett@blangdon.com> (http://brett.is)",
+    "bugs": {
+        "url": "https://github.com/brettlangdon/yaps/issues"
+    },
+    "description": "Yet Another Plugin Server",
+    "devDependencies": {
+        "jscoverage": "~0.3.8",
+        "mocha": "~1.12.1"
+    },
+    "keywords": [
+        "http",
+        "plugin",
+        "server"
+    ],
+    "license": "MIT",
+    "main": "index.js",
+    "name": "yaps",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/brettlangdon/yaps.git"
+    },
+    "scripts": {
+        "test": "make test"
+    },
+    "version": "0.1.0"
+}

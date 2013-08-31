@@ -1,6 +1,9 @@
 Yet Another Plugin Server
 =========================
 
+[![Build Status](https://travis-ci.org/brettlangdon/yaps.png?branch=master)](https://travis-ci.org/brettlangdon/yaps)
+[![Coverage Status](https://coveralls.io/repos/brettlangdon/yaps/badge.png?branch=master)](https://coveralls.io/r/brettlangdon/yaps?branch=master)
+
 YAPS is plugin based HTTP server that gets out of your way and lets you do what you need to do.
 
 ## Installation

@@ -13,9 +13,9 @@ suite("Plugin.GET", function(){
 	plugin.GET("/test", handler);
 
 	assert.ok(plugin.routes);
-	assert.ok(plugin.routes["GET"]);
-	assert.ok(plugin.routes["GET"]["/test"]);
-	assert.deepEqual(plugin.routes["GET"]["/test"], [handler]);
+	assert.ok(plugin.routes.GET);
+	assert.ok(plugin.routes.GET["/test"]);
+	assert.deepEqual(plugin.routes.GET["/test"], [handler]);
     });
 });
 
@@ -27,9 +27,9 @@ suite("Plugin.POST", function(){
 	plugin.POST("/test", handler);
 
 	assert.ok(plugin.routes);
-	assert.ok(plugin.routes["POST"]);
-	assert.ok(plugin.routes["POST"]["/test"]);
-	assert.deepEqual(plugin.routes["POST"]["/test"], [handler]);
+	assert.ok(plugin.routes.POST);
+	assert.ok(plugin.routes.POST["/test"]);
+	assert.deepEqual(plugin.routes.POST["/test"], [handler]);
     });
 });
 
@@ -41,9 +41,9 @@ suite("Plugin.PUT", function(){
 	plugin.PUT("/test", handler);
 
 	assert.ok(plugin.routes);
-	assert.ok(plugin.routes["PUT"]);
-	assert.ok(plugin.routes["PUT"]["/test"]);
-	assert.deepEqual(plugin.routes["PUT"]["/test"], [handler]);
+	assert.ok(plugin.routes.PUT);
+	assert.ok(plugin.routes.PUT["/test"]);
+	assert.deepEqual(plugin.routes.PUT["/test"], [handler]);
     });
 });
 
@@ -55,9 +55,9 @@ suite("Plugin.HEAD", function(){
 	plugin.HEAD("/test", handler);
 
 	assert.ok(plugin.routes);
-	assert.ok(plugin.routes["HEAD"]);
-	assert.ok(plugin.routes["HEAD"]["/test"]);
-	assert.deepEqual(plugin.routes["HEAD"]["/test"], [handler]);
+	assert.ok(plugin.routes.HEAD);
+	assert.ok(plugin.routes.HEAD["/test"]);
+	assert.deepEqual(plugin.routes.HEAD["/test"], [handler]);
     });
 });
 
@@ -69,9 +69,9 @@ suite("Plugin.DELETE", function(){
 	plugin.DELETE("/test", handler);
 
 	assert.ok(plugin.routes);
-	assert.ok(plugin.routes["DELETE"]);
-	assert.ok(plugin.routes["DELETE"]["/test"]);
-	assert.deepEqual(plugin.routes["DELETE"]["/test"], [handler]);
+	assert.ok(plugin.routes.DELETE);
+	assert.ok(plugin.routes.DELETE["/test"]);
+	assert.deepEqual(plugin.routes.DELETE["/test"], [handler]);
     });
 });
 
@@ -83,9 +83,9 @@ suite("Plugin.PATCH", function(){
 	plugin.PATCH("/test", handler);
 
 	assert.ok(plugin.routes);
-	assert.ok(plugin.routes["PATCH"]);
-	assert.ok(plugin.routes["PATCH"]["/test"]);
-	assert.deepEqual(plugin.routes["PATCH"]["/test"], [handler]);
+	assert.ok(plugin.routes.PATCH);
+	assert.ok(plugin.routes.PATCH["/test"]);
+	assert.deepEqual(plugin.routes.PATCH["/test"], [handler]);
     });
 });
 
@@ -130,8 +130,8 @@ suite("Plugin.on", function(){
 
     test("on with unknown event should raise Error", function(){
 	var plugin = new yaps.plugin();
-	assert.throws(function(){
-	    plugin.on("uknown-event", false);
+        assert.throws(function(){
+            plugin.on("uknown-event", false);
 	}, Error);
     });
 

@@ -70,9 +70,8 @@ plugin.prototype.handle_test = function(request, server, respond){
         respond(null);
     } else{
 	    // this interrupts the handler chain and returns to the user
-        respond(200, "Thanks for visiting /test", {
-            extra_header: "used /test",
-        });
+        respond.addHeader("extra_header", "used /test");
+        respond(200, "Thanks for visiting /test");
     }
 };
 

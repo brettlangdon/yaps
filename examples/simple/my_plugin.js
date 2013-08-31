@@ -19,27 +19,25 @@ my_plugin.prototype.set_time = function(request, server, done){
 
 my_plugin.prototype.add_headers = function(request, server, done){
     var time = request.current_time;
-    request.extra_headers = {
-        request_time: time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds(),
-    };
+    request.addHeader("request_time", time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
     done();
 };
 
 my_plugin.prototype.handle_test = function(request, server, respond){
-    respond(200, "thanks for visiting /test", request.extra_headers);
+    respond(200, "thanks for visiting /test");
 };
 
 my_plugin.prototype.handle_root = function(request, server, respond){
-    respond(200, "check out /test", request.extra_headers);
+    respond(200, "check out /test");
 };
 
 my_plugin.prototype.no_respond = function(request, server, respond){
-    request.extra_headers.no_respond = "true";
+    request.addHeader("no_respond", "true");
     respond();
 };
 
 my_plugin.prototype.not_found = function(request, server, respond){
-    respond(404, "couldn't find handler for url: " + request.url, request.extra_headers);
+    respond(404, "couldn't find handler for url: " + request.url);
 };
 
 module.exports = my_plugin;

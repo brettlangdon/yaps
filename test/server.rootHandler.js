@@ -91,7 +91,8 @@ suite("Server.RootHandler", function(){
 
     test("should properly end response when handler responds", function(done){
         var handler = function(request, server, respond){
-            respond(200, "here is a test", {extra: "header"});
+            request.addHeader("extra", "header");
+            respond(200, "here is a test");
         };
         var handler_spy = sinon.spy(handler);
 
@@ -106,7 +107,7 @@ suite("Server.RootHandler", function(){
             assert.ok(this.writeHead.calledOnce);
             assert.ok(this.end.calledOnce);
 
-            assert.ok(this.writeHead.calledWith(200, {extra: "header"}));
+            assert.ok(this.writeHead.calledWith(200, [["extra", "header"]]));
             assert.ok(this.end.calledWith("here is a test"));
             done();
         });

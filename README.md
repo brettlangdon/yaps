@@ -54,8 +54,8 @@ var plugin = function(){
     // OR
     this.GET("/test", this.handle_test);
 
-    // this handler gets called for every new request
-    this.on("request", this.request_setup);
+    // this handler gets called for every new request regardless of route
+    this.on("setup", this.request_setup);
 
     // for when there isn't a handler that responds to the request, call this
     this.on("not-found", this.not_found);

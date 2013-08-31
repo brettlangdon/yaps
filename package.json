@@ -5,8 +5,10 @@
     },
     "description": "Yet Another Plugin Server",
     "devDependencies": {
+        "coveralls": "~2.2.0",
         "jscoverage": "~0.3.8",
         "mocha": "~1.12.1",
+        "mocha-lcov-reporter": "0.0.1",
         "sinon": "~1.7.3"
     },
     "keywords": [

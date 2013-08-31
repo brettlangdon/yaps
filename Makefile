@@ -11,6 +11,11 @@ test:
 test-cov: lib-cov
 	@YAPS_COV=1 $(MAKE) test REPORTER=html-cov > coverage.html
 
+test-coveralls: lib-cov
+	echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
+	@YAPS_COV=1 $(MAKE) test REPORTER=mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js
+	$(MAKE) clean
+
 lib-cov:
 	@./node_modules/.bin/jscoverage lib lib-cov
 

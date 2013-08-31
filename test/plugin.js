@@ -105,8 +105,8 @@ suite("Plugin.on", function(){
 	var handler = function(request, server, done){};
 	plugin.on("not-found", handler);
 
-	assert.ok(plugin.not_found);
-	assert.equal(plugin.not_found, handler);
+	assert.ok(plugin.notFound);
+	assert.equal(plugin.notFound, handler);
     });
 
     test("calling on not-found twice should overwrite not-found handler", function(){
@@ -115,8 +115,8 @@ suite("Plugin.on", function(){
 	plugin.on("not-found", false);
 	plugin.on("not-found", handler);
 
-	assert.ok(plugin.not_found);
-	assert.equal(plugin.not_found, handler);
+	assert.ok(plugin.notFound);
+	assert.equal(plugin.notFound, handler);
     });
 
     test("on 404 should set not-found handler", function(){
@@ -124,8 +124,8 @@ suite("Plugin.on", function(){
 	var handler = function(request, server, done){};
 	plugin.on("404", handler);
 
-	assert.ok(plugin.not_found);
-	assert.equal(plugin.not_found, handler);
+	assert.ok(plugin.notFound);
+	assert.equal(plugin.notFound, handler);
     });
 
     test("on with unknown event should raise Error", function(){

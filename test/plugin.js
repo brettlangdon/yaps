@@ -102,7 +102,7 @@ suite("Plugin.on", function(){
 
     test("on not-found should set not-found handler", function(){
 	var plugin = new yaps.plugin();
-	var handler = function(request, server, done){};
+	var handler = function(request, server, respond){};
 	plugin.on("not-found", handler);
 
 	assert.ok(plugin.notFound);
@@ -111,7 +111,7 @@ suite("Plugin.on", function(){
 
     test("calling on not-found twice should overwrite not-found handler", function(){
 	var plugin = new yaps.plugin();
-	var handler = function(request, server, done){};
+	var handler = function(request, server, respond){};
 	plugin.on("not-found", false);
 	plugin.on("not-found", handler);
 
@@ -121,7 +121,7 @@ suite("Plugin.on", function(){
 
     test("on 404 should set not-found handler", function(){
 	var plugin = new yaps.plugin();
-	var handler = function(request, server, done){};
+	var handler = function(request, server, respond){};
 	plugin.on("404", handler);
 
 	assert.ok(plugin.notFound);

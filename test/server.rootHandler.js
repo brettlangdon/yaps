@@ -51,9 +51,10 @@ suite("Server.RootHandler", function(){
         });
 
         var server = new yaps.server();
+        server.enabledPlugins = [{}];
         server.routes.GET = {
             "/test": [
-                handler_spy,
+                [handler_spy, 0],
             ]
         };
 
@@ -113,9 +114,10 @@ suite("Server.RootHandler", function(){
         });
 
         var server = new yaps.server();
+        server.enabledPlugins = [{}];
         server.routes.GET = {
             "/test": [
-                handler_spy,
+                [handler_spy, 0],
             ]
         };
 

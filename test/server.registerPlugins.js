@@ -41,8 +41,8 @@ suite("Server.RegisterPlugin", function(){
 
         assert.ok(server.routes.GET);
         assert.ok(server.routes.TEST);
-        assert.deepEqual(server.routes.GET["/test"], ["handler_1", "handler_2"]);
-        assert.deepEqual(server.routes.TEST["/test"], ["handler_3", "handler_4"]);
+        assert.deepEqual(server.routes.GET["/test"], [["handler_1", 0], ["handler_2", 0]]);
+        assert.deepEqual(server.routes.TEST["/test"], [["handler_3", 0], ["handler_4", 0]]);
     });
 
     test("should transfer routes from multiple plugins without overwriting any", function(){
@@ -72,7 +72,9 @@ suite("Server.RegisterPlugin", function(){
         server.registerPlugin(plugin_2);
 
         assert.ok(server.routes.GET);
-        assert.deepEqual(server.routes.GET["/test"], ["handler_1", "handler_2", "handler_3", "handler_4"]);
+        assert.deepEqual(server.routes.GET["/test"], [
+            ["handler_1", 0], ["handler_2", 0], ["handler_3", 1], ["handler_4", 1]
+        ]);
     });
 
     test("should append plugins notFound to server", function(){
@@ -81,7 +83,7 @@ suite("Server.RegisterPlugin", function(){
 	};
         var server = new yaps.server();
 	server.registerPlugin(plugin);
-        assert.deepEqual(server.notFound, ["handler"]);
+        assert.deepEqual(server.notFound, [["handler", 0]]);
     });
 
     test("should append notFound from multiple plugins", function(){
@@ -95,7 +97,7 @@ suite("Server.RegisterPlugin", function(){
         var server = new yaps.server();
 	server.registerPlugin(plugin_1);
 	server.registerPlugin(plugin_2);
-        assert.deepEqual(server.notFound, ["handler_1", "handler_2"]);
+        assert.deepEqual(server.notFound, [["handler_1", 0], ["handler_2", 1]]);
     });
 
     test("should append plugins setup to server", function(){
@@ -104,7 +106,7 @@ suite("Server.RegisterPlugin", function(){
 	};
         var server = new yaps.server();
 	server.registerPlugin(plugin);
-        assert.deepEqual(server.setup, ["handler_1", "handler_2"]);
+        assert.deepEqual(server.setup, [["handler_1", 0], ["handler_2", 0]]);
     });
 
     test("should append setup from multiple plugins", function(){
@@ -117,6 +119,8 @@ suite("Server.RegisterPlugin", function(){
         var server = new yaps.server();
 	server.registerPlugin(plugin_1);
 	server.registerPlugin(plugin_2);
-        assert.deepEqual(server.setup, ["handler_1", "handler_2", "handler_3", "handler_4"]);
+        assert.deepEqual(server.setup, [
+            ["handler_1", 0], ["handler_2", 0], ["handler_3", 1], ["handler_4", 1]
+        ]);
     });
 });
